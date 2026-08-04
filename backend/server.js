@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
+const connectDB = require('./config/db');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -29,9 +30,16 @@ app.use((err, req, res, next) => {
 });
 
 if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`FitTrack API listening on port ${port}`);
-  });
+  connectDB()
+    .then(() => {
+      app.listen(port, () => {
+        console.log(`FitTrack API listening on port ${port}`);
+      });
+    })
+    .catch((error) => {
+      console.error('MongoDB connection failed:', error);
+      process.exit(1);
+    });
 }
 
 module.exports = app;
