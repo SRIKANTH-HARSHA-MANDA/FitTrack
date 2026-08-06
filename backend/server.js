@@ -22,6 +22,8 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+app.use('/api/auth', require('./routes/authRoutes'));
+
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({
