@@ -25,6 +25,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/workouts', require('./routes/workoutRoutes'));
+app.use('/api/water', require('./routes/waterRoutes'));
 
 app.use((err, req, res, next) => {
   console.error(err);
