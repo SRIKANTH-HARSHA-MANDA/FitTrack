@@ -27,6 +27,7 @@ app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/workouts', require('./routes/workoutRoutes'));
 app.use('/api/water', require('./routes/waterRoutes'));
 app.use('/api/weight', require('./routes/weightRoutes'));
+app.use('/api/goals', require('./routes/goalRoutes'));
 
 app.use((err, req, res, next) => {
   console.error(err);
